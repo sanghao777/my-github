@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wlw02.zhly.dao.SpotMapper">
+  <resultMap id="BaseResultMap" type="com.wlw02.zhly.po.Spot">
+    <id column="sp_id" jdbcType="VARCHAR" property="spId" />
+    <result column="sp_name" jdbcType="VARCHAR" property="spName" />
+    <result column="sp_userId" jdbcType="VARCHAR" property="spUserid" />
+    <result column="sp_detial" jdbcType="VARCHAR" property="spDetial" />
+    <result column="sp_address" jdbcType="VARCHAR" property="spAddress" />
+    <result column="sp_phone" jdbcType="VARCHAR" property="spPhone" />
+    <result column="ticket_class" jdbcType="VARCHAR" property="ticketClass" />
+    <result column="ticket_price" jdbcType="VARCHAR" property="ticketPrice" />
+    <result column="sp_img" jdbcType="VARCHAR" property="spImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sp_id, sp_name, sp_userId, sp_detial, sp_address, sp_phone, ticket_class, ticket_price, 
+    sp_img
+  </sql>
+  <select id="queryAll" resultMap="BaseResultMap">
+     select * from spot
+    </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spot
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from spot
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wlw02.zhly.po.Spot">
+    insert into spot (sp_id, sp_name, sp_userId, 
+      sp_detial, sp_address, sp_phone, 
+      ticket_class, ticket_price, sp_img
+      )
+    values (#{spId,jdbcType=VARCHAR}, #{spName,jdbcType=VARCHAR}, #{spUserid,jdbcType=VARCHAR}, 
+      #{spDetial,jdbcType=VARCHAR}, #{spAddress,jdbcType=VARCHAR}, #{spPhone,jdbcType=VARCHAR}, 
+      #{ticketClass,jdbcType=VARCHAR}, #{ticketPrice,jdbcType=VARCHAR}, #{spImg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wlw02.zhly.po.Spot">
+    insert into spot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spId != null">
+        sp_id,
+      </if>
+      <if test="spName != null">
+        sp_name,
+      </if>
+      <if test="spUserid != null">
+        sp_userId,
+      </if>
+      <if test="spDetial != null">
+        sp_detial,
+      </if>
+      <if test="spAddress != null">
+        sp_address,
+      </if>
+      <if test="spPhone != null">
+        sp_phone,
+      </if>
+      <if test="ticketClass != null">
+        ticket_class,
+      </if>
+      <if test="ticketPrice != null">
+        ticket_price,
+      </if>
+      <if test="spImg != null">
+        sp_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spId != null">
+        #{spId,jdbcType=VARCHAR},
+      </if>
+      <if test="spName != null">
+        #{spName,jdbcType=VARCHAR},
+      </if>
+      <if test="spUserid != null">
+        #{spUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="spDetial != null">
+        #{spDetial,jdbcType=VARCHAR},
+      </if>
+      <if test="spAddress != null">
+        #{spAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spPhone != null">
+        #{spPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketClass != null">
+        #{ticketClass,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketPrice != null">
+        #{ticketPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="spImg != null">
+        #{spImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wlw02.zhly.po.Spot">
+    update spot
+    <set>
+      <if test="spName != null">
+        sp_name = #{spName,jdbcType=VARCHAR},
+      </if>
+      <if test="spUserid != null">
+        sp_userId = #{spUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="spDetial != null">
+        sp_detial = #{spDetial,jdbcType=VARCHAR},
+      </if>
+      <if test="spAddress != null">
+        sp_address = #{spAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="spPhone != null">
+        sp_phone = #{spPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketClass != null">
+        ticket_class = #{ticketClass,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketPrice != null">
+        ticket_price = #{ticketPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="spImg != null">
+        sp_img = #{spImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wlw02.zhly.po.Spot">
+    update spot
+    set sp_name = #{spName,jdbcType=VARCHAR},
+      sp_userId = #{spUserid,jdbcType=VARCHAR},
+      sp_detial = #{spDetial,jdbcType=VARCHAR},
+      sp_address = #{spAddress,jdbcType=VARCHAR},
+      sp_phone = #{spPhone,jdbcType=VARCHAR},
+      ticket_class = #{ticketClass,jdbcType=VARCHAR},
+      ticket_price = #{ticketPrice,jdbcType=VARCHAR},
+      sp_img = #{spImg,jdbcType=VARCHAR}
+    where sp_id = #{spId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wlw02.zhly.dao.TicketMapper">
+  <resultMap id="BaseResultMap" type="com.wlw02.zhly.po.Ticket">
+    <id column="t_id" jdbcType="VARCHAR" property="tId" />
+    <result column="t_name" jdbcType="VARCHAR" property="tName" />
+    <result column="t_user" jdbcType="VARCHAR" property="tUser" />
+    <result column="t_date" jdbcType="VARCHAR" property="tDate" />
+    <result column="t_price" jdbcType="VARCHAR" property="tPrice" />
+    <result column="t_range" jdbcType="VARCHAR" property="tRange" />
+    <result column="sp_id" jdbcType="VARCHAR" property="spId" />
+    <result column="u_id" jdbcType="VARCHAR" property="uId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    t_id, t_name, t_user, t_date, t_price, t_range, sp_id, u_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ticket
+    where t_id = #{tId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ticket
+    where t_id = #{tId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wlw02.zhly.po.Ticket">
+    insert into ticket (t_id, t_name, t_user, 
+      t_date, t_price, t_range, 
+      sp_id, u_id)
+    values (#{tId,jdbcType=VARCHAR}, #{tName,jdbcType=VARCHAR}, #{tUser,jdbcType=VARCHAR}, 
+      #{tDate,jdbcType=VARCHAR}, #{tPrice,jdbcType=VARCHAR}, #{tRange,jdbcType=VARCHAR}, 
+      #{spId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wlw02.zhly.po.Ticket">
+    insert into ticket
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tId != null">
+        t_id,
+      </if>
+      <if test="tName != null">
+        t_name,
+      </if>
+      <if test="tUser != null">
+        t_user,
+      </if>
+      <if test="tDate != null">
+        t_date,
+      </if>
+      <if test="tPrice != null">
+        t_price,
+      </if>
+      <if test="tRange != null">
+        t_range,
+      </if>
+      <if test="spId != null">
+        sp_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tId != null">
+        #{tId,jdbcType=VARCHAR},
+      </if>
+      <if test="tName != null">
+        #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="tUser != null">
+        #{tUser,jdbcType=VARCHAR},
+      </if>
+      <if test="tDate != null">
+        #{tDate,jdbcType=VARCHAR},
+      </if>
+      <if test="tPrice != null">
+        #{tPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="tRange != null">
+        #{tRange,jdbcType=VARCHAR},
+      </if>
+      <if test="spId != null">
+        #{spId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wlw02.zhly.po.Ticket">
+    update ticket
+    <set>
+      <if test="tName != null">
+        t_name = #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="tUser != null">
+        t_user = #{tUser,jdbcType=VARCHAR},
+      </if>
+      <if test="tDate != null">
+        t_date = #{tDate,jdbcType=VARCHAR},
+      </if>
+      <if test="tPrice != null">
+        t_price = #{tPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="tRange != null">
+        t_range = #{tRange,jdbcType=VARCHAR},
+      </if>
+      <if test="spId != null">
+        sp_id = #{spId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where t_id = #{tId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wlw02.zhly.po.Ticket">
+    update ticket
+    set t_name = #{tName,jdbcType=VARCHAR},
+      t_user = #{tUser,jdbcType=VARCHAR},
+      t_date = #{tDate,jdbcType=VARCHAR},
+      t_price = #{tPrice,jdbcType=VARCHAR},
+      t_range = #{tRange,jdbcType=VARCHAR},
+      sp_id = #{spId,jdbcType=VARCHAR},
+      u_id = #{uId,jdbcType=VARCHAR}
+    where t_id = #{tId,jdbcType=VARCHAR}
+  </update>
+   
+  <select id="queryAll" resultMap="BaseResultMap">
+     select * from ticket
+    </select>
+</mapper>

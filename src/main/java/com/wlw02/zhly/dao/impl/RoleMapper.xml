@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wlw02.zhly.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.wlw02.zhly.po.Role">
+    <id column="r_id" jdbcType="VARCHAR" property="rId" />
+    <result column="r_name" jdbcType="VARCHAR" property="rName" />
+    <result column="r_memo" jdbcType="VARCHAR" property="rMemo" />
+    <result column="r_path" jdbcType="VARCHAR" property="rPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    r_id, r_name, r_memo, r_path
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where r_id = #{rId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from role
+    where r_id = #{rId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wlw02.zhly.po.Role">
+    insert into role (r_id, r_name, r_memo, 
+      r_path)
+    values (#{rId,jdbcType=VARCHAR}, #{rName,jdbcType=VARCHAR}, #{rMemo,jdbcType=VARCHAR}, 
+      #{rPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wlw02.zhly.po.Role">
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rName != null">
+        r_name,
+      </if>
+      <if test="rMemo != null">
+        r_memo,
+      </if>
+      <if test="rPath != null">
+        r_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=VARCHAR},
+      </if>
+      <if test="rName != null">
+        #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rMemo != null">
+        #{rMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="rPath != null">
+        #{rPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wlw02.zhly.po.Role">
+    update role
+    <set>
+      <if test="rName != null">
+        r_name = #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rMemo != null">
+        r_memo = #{rMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="rPath != null">
+        r_path = #{rPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wlw02.zhly.po.Role">
+    update role
+    set r_name = #{rName,jdbcType=VARCHAR},
+      r_memo = #{rMemo,jdbcType=VARCHAR},
+      r_path = #{rPath,jdbcType=VARCHAR}
+    where r_id = #{rId,jdbcType=VARCHAR}
+  </update>
+  <select id="queryAll" resultMap="BaseResultMap">
+     select * from role
+    </select>
+</mapper>

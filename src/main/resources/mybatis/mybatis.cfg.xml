@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 配置各种全局属性 -->
+	<settings>
+		<!-- 开启日志输出MyBatis操作信息 -->
+		<!-- <setting name="logImpl" value="STDOUT_LOGGING" /> -->
+		<setting name="cacheEnabled" value="ture"/><!--启用缓存  -->
+	</settings>
+ </configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+	<commentGenerator>
+			<property name="javaFileEncoding" value="UTF-8" />
+			<!-- 是否去除自动生成的注释 true：是 ， false：否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection
+			connectionURL="jdbc:mysql://localhost:3306/zhly?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false&amp;nullCatalogMeansCurrent=true"
+			driverClass="com.mysql.cj.jdbc.Driver" password="root" userId="root" />
+
+		<javaModelGenerator
+			targetPackage="com.wlw02.zhly.po" targetProject="ZHLY" />
+		<sqlMapGenerator targetPackage="com.wlw02.zhly.dao"
+			targetProject="ZHLY" />
+		<javaClientGenerator
+			targetPackage="com.wlw02.zhly.dao.impl" targetProject="ZHLY"
+			type="XMLMAPPER" />
+
+		<!-- <table schema="???" tableName="???"> <columnOverride column="???" 
+			property="???" /> </table> -->
+		<table tableName="%"
+		    enableCountByExample="false"
+		    enableSelectByExample="false"
+		    enableUpdateByExample="false"
+		    enableDeleteByExample="false"
+		    selectByExampleQueryId="false"
+		   >
+		<!--    <property name="useActualColumnNames" value="true"/>--> 
+		</table>
+
+	</context>
+</generatorConfiguration>
